@@ -1,0 +1,5 @@
+@model List<Bootcamp>
+            @foreach (var bootcamp in Model)
+            {
+            @await Html.PartialAsync("_Bootcamp",bootcamp)
+            }
