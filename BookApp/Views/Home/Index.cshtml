@@ -1,0 +1,49 @@
+﻿@model ProductViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="card card-body my-3">
+    <form asp-action="Index" method="get">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-11">
+                    <select name="category" class="form-select" asp-items="@(new SelectList(Model.Categories,"CategoryId","Name",Model.SelectedCategory))">
+                        <option value="0">Hepsi</option>
+                    </select>
+                </div>
+                <div class="col-md-1">
+                    <button type="submit" class="btn btn-primary">FİLTRELE</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th style="width: 80px;">@Html.DisplayNameFor(m=>m.Products[0].ProductId)</th>
+            <th style="width: 100px;">@Html.DisplayNameFor(m=>m.Products[0].Image)</th>
+            <th>@Html.DisplayNameFor(m=>m.Products[0].Name)</th>
+            <th style="width: 100px;">@Html.DisplayNameFor(m=>m.Products[0].Price)</th>
+            <th style="width: 150px;">Settigs</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var prd in @Model.Products){
+            <tr>
+                <td>@prd.ProductId</td>
+                <td>
+                    <img src="~/img/@prd.Image" alt="" class="img-fluid">
+                </td>
+                <td>@prd.Name</td>
+                <td>@prd.Price</td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
