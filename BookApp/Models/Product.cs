@@ -10,8 +10,9 @@ namespace BookApp.Models{
         [Required(ErrorMessage ="Kitap adı zorunlu")]
         public string Name { get; set; } = null!;
 
-        [Required(ErrorMessage ="Ücret adı zorunlu")]
+        
         [Display(Name="Ücret")]
+        [Required(ErrorMessage ="Ücret adı zorunlu")]
         [Range(0,1000)]
         public decimal Price {get;set;}
 
