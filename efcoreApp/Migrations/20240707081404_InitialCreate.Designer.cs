@@ -11,7 +11,7 @@ using efcoreApp.Data;
 namespace efcoreApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240703123403_InitialCreate")]
+    [Migration("20240707081404_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -40,6 +40,9 @@ namespace efcoreApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("BootcampKursId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("KayitTarihi")
                         .HasColumnType("TEXT");
 
@@ -50,6 +53,10 @@ namespace efcoreApp.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("KayitId");
+
+                    b.HasIndex("BootcampKursId");
+
+                    b.HasIndex("OgrenciId");
 
                     b.ToTable("KursKayitlari");
                 });
@@ -75,6 +82,25 @@ namespace efcoreApp.Migrations
                     b.HasKey("OgrenciId");
 
                     b.ToTable("Ogrenciler");
+                });
+
+            modelBuilder.Entity("efcoreApp.Data.BootcampKayit", b =>
+                {
+                    b.HasOne("efcoreApp.Data.Bootcamp", "Bootcamp")
+                        .WithMany()
+                        .HasForeignKey("BootcampKursId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("efcoreApp.Data.Ogrenci", "Ogrenci")
+                        .WithMany()
+                        .HasForeignKey("OgrenciId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Bootcamp");
+
+                    b.Navigation("Ogrenci");
                 });
 #pragma warning restore 612, 618
         }

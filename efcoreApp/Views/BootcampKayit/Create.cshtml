@@ -1,0 +1,25 @@
+@model BootcampKayit
+
+<h2>Bootcamp Kayıt Ekle</h2>
+
+<hr>
+<form asp-controller="BootcampKayit" asp-action="Create" method="post">
+
+    <div class="mb-3">
+        <label asp-for="OgrenciId" class="form-label">Öğrenci</label>
+        <select asp-for="OgrenciId" asp-items="ViewBag.Ogrenciler" class="form-select">
+            <option value="">Seçiniz</option>
+        </select>
+
+    </div>
+    <div class="mb-3">
+        <label asp-for="KursId" class="form-label">Bootcamp</label>
+        <select asp-for="KursId" asp-items="ViewBag.Bootcamps" class="form-select">
+            <option value="">Seçiniz</option>
+        </select>
+
+    </div>
+
+
+    <button type="submit" class="btn btn-success">Kaydet</button>
+</form>
