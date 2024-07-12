@@ -62,3 +62,7 @@ C:\Users\Kaya3\Documents\GitHub\28-06-2024-Backend-Bootcamp\BlogApp\obj\Debug\ne
 C:\Users\Kaya3\Documents\GitHub\28-06-2024-Backend-Bootcamp\BlogApp\obj\Debug\net7.0\BlogApp.pdb
 C:\Users\Kaya3\Documents\GitHub\28-06-2024-Backend-Bootcamp\BlogApp\obj\Debug\net7.0\BlogApp.genruntimeconfig.cache
 C:\Users\Kaya3\Documents\GitHub\28-06-2024-Backend-Bootcamp\BlogApp\obj\Debug\net7.0\ref\BlogApp.dll
+C:\Users\Kaya3\Documents\GitHub\28-06-2024-Backend-Bootcamp\BlogApp\obj\Debug\net7.0\BlogApp.RazorAssemblyInfo.cache
+C:\Users\Kaya3\Documents\GitHub\28-06-2024-Backend-Bootcamp\BlogApp\obj\Debug\net7.0\BlogApp.RazorAssemblyInfo.cs
+C:\Users\Kaya3\Documents\GitHub\28-06-2024-Backend-Bootcamp\BlogApp\bin\Debug\net7.0\libman.json
+C:\Users\Kaya3\Documents\GitHub\28-06-2024-Backend-Bootcamp\BlogApp\bin\Debug\net7.0\BlogApp.staticwebassets.runtime.json

@@ -1,0 +1,10 @@
+body{
+    background-color: #eff2f6;
+}
+a{
+    text-decoration: none;
+}
+.avatar{
+    width: 80px;
+    height: 80px;
+}
