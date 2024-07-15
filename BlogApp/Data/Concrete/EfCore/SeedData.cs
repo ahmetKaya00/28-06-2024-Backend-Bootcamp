@@ -31,6 +31,7 @@ namespace BlogApp.Data.Concrete.EfCore{
                 context.Posts.AddRange(
                     new Entity.Post{
                         Title = "asp .net core",
+                        Description = "asp .net core bootcampi güzeldir. Bu bootcampte yenilikler öğreneceğiz.",
                         Content = "asp .net core bootcampi güzeldir.",
                         Url = "asp-netcore",
                         IsActive = true,
@@ -45,6 +46,7 @@ namespace BlogApp.Data.Concrete.EfCore{
                     },
                     new Entity.Post{
                         Title = "Unity Game",
+                        Description = "unity ile oyun yapımı güzeldir. Bu bootcampte yenilikler öğreneceğiz.",
                         Content = "unity ile oyun yapımı güzeldir.",
                         Url = "unity-game",
                         IsActive = true,
@@ -55,6 +57,7 @@ namespace BlogApp.Data.Concrete.EfCore{
                     },
                     new Entity.Post{
                         Title = "Php Bootcamp",
+                         Description = "Php ile web sitesi yapımı. Bu bootcampte yenilikler öğreneceğiz.",
                         Content = "Php ile web sitesi yapımı",
                         Url = "php-bootcamp",
                         IsActive = true,

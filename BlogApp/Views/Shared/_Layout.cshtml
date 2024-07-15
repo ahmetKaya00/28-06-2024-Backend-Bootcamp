@@ -21,7 +21,10 @@
                 @if (User.Identity!.IsAuthenticated)
                 {
                     <li class="nav-item">
-                        <a href="#" class="nav-link">@User.Identity.Name</a>
+                        <a asp-controller="Posts" asp-action="List" class="nav-link">Post List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/profile/@User.Identity.Name" class="nav-link">@User.Identity.Name</a>
                     </li>
                     <li class="nav-item">
                         <a asp-controller="Users" asp-action="Logout" class="nav-link">Logout</a>
@@ -31,6 +34,9 @@
                 {
                     <li class="nav-item">
                         <a asp-controller="Users" asp-action="Login" class="nav-link">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Users" asp-action="Register" class="nav-link">Register</a>
                     </li>
                 }
 
