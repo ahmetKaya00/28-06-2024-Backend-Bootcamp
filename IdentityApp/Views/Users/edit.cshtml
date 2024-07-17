@@ -1,0 +1,32 @@
+@model EditViewModel    
+
+<h2>Edit User</h2>
+<hr>
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="hidden" name="Id" value="@Model.Id">
+    <div class="mb-3">
+        <label asp-for="FullName" class="form-label"></label>
+        <input asp-for="FullName" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control">
+    </div>
+    <div class="card">
+        <div class="card-header">Parola Güncelle</div>
+    <div class="card-body">
+
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label"></label>
+        <input asp-for="Password" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="ConfirmPassword" class="form-label"></label>
+        <input asp-for="ConfirmPassword" class="form-control">
+    </div>
+    </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Kaydet</button>
+</form>
