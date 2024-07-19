@@ -2,16 +2,19 @@ using IdentityApp.Models;
 using IdentityApp.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace IdentityApp.Controllers
 {
     public class UsersController : Controller
     {
         private UserManager<AppUser> _userManager;
+        private RoleManager<AppRole> _roleManager;
 
-        public UsersController(UserManager<AppUser> userManager)
+        public UsersController(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
         }
         public IActionResult Index()
         {
@@ -26,7 +29,7 @@ namespace IdentityApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new AppUser { UserName = model.Email, Email = model.Email, FullName = model.FullName };
+                var user = new AppUser { UserName = model.UserName, Email = model.Email, FullName = model.FullName };
 
                 IdentityResult result = await _userManager.CreateAsync(user, model.Password);
 
@@ -51,10 +54,13 @@ namespace IdentityApp.Controllers
             }
             var user = await _userManager.FindByIdAsync(id);
             if(user!=null){
+
+                ViewBag.Roles = await _roleManager.Roles.Select(i=>i.Name).ToListAsync();
                 return View(new EditViewModel{
                     Id = user.Id,
                     FullName = user.FullName,
-                    Email = user.Email
+                    Email = user.Email,
+                    SelectedRoles = await _userManager.GetRolesAsync(user)
                 });
             }
             return View();
@@ -79,6 +85,10 @@ namespace IdentityApp.Controllers
                         await _userManager.AddPasswordAsync(user,model.Password);
                     }
                     if(result.Succeeded){
+                        await _userManager.RemoveFromRolesAsync(user, await _userManager.GetRolesAsync(user));
+                        if(model.SelectedRoles != null){
+                            await _userManager.AddToRolesAsync(user, model.SelectedRoles);
+                        }
                         return RedirectToAction("Index"); 
                     }
                     foreach(IdentityError err in result.Errors){
@@ -87,6 +97,16 @@ namespace IdentityApp.Controllers
                 }
             }
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult>Delete(string id){
+            var user = await _userManager.FindByIdAsync(id);
+
+            if(user != null){
+                await _userManager.DeleteAsync(user);
+            }
+            return RedirectToAction("Index");
         }
     }
 }
